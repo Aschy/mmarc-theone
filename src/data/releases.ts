@@ -28,10 +28,10 @@ export const releases: Release[] = [
     with: ['Klara-V'], cover: '/img/covers/sidi-ciel.webp', featured: true, langs: ['fr', 'ar'],
     apple: 'https://music.apple.com/fr/album/sidi-ciel-club-house-single/6801770362',
     note: {
-      fr: 'Mashup CIEL (GIMS) × Sidi Mansour à 102 BPM : lead vocal humain, darbouka tunisienne, ambiance night-club oriental.',
-      en: 'CIEL (GIMS) × Sidi Mansour mashup at 102 BPM: human lead vocal, Tunisian darbuka, oriental night-club energy.',
-      ar: 'مزج بين «CIEL» (GIMS) و«سيدي منصور» على 102 نبضة/د: صوت بشري، دربوكة تونسية، أجواء ملهى ليلي شرقي.',
-      es: 'Mashup CIEL (GIMS) × Sidi Mansour a 102 BPM: voz principal humana, darbuka tunecina, ambiente de club oriental.',
+      fr: 'Mashup CIEL (GIMS) × Sidi Mansour à 102 BPM : lead vocal humain, percussions jouées, ambiance night-club.',
+      en: 'CIEL (GIMS) × Sidi Mansour mashup at 102 BPM: human lead vocal, played percussion, night-club energy.',
+      ar: 'مزج بين «CIEL» (GIMS) و«سيدي منصور» على 102 نبضة/د: صوت بشري، إيقاعات معزوفة، أجواء ملهى ليلي.',
+      es: 'Mashup CIEL (GIMS) × Sidi Mansour a 102 BPM: voz principal humana, percusiones tocadas, ambiente de club.',
     },
   },
   {
