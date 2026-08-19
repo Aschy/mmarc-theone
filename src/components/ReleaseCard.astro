@@ -1,0 +1,29 @@
+---
+import type { Release } from '../data/releases';
+import type { Lang } from '../data/site';
+import { t, langNames } from '../i18n/ui';
+interface Props { r: Release; lang: Lang; }
+const { r, lang } = Astro.props;
+const d = t(lang).disco;
+const fmt = (iso: string) => new Intl.DateTimeFormat(lang === 'ar' ? 'ar-TN' : lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+const links = [
+  ['YouTube', r.youtube], ['Apple Music', r.apple], ['Spotify', r.spotify],
+].filter(([, u]) => u) as [string, string][];
+---
+<article class="release-card reveal" id={r.id}>
+  <div class="cover">
+    {r.cover ? <img src={r.cover} alt={`${r.title} — ${d.types[r.type]}`} loading="lazy" width="600" height="600" /> : <div class="ph" aria-hidden="true">M</div>}
+  </div>
+  <div class="body">
+    <div class="meta">
+      <span class:list={['tag', { red: r.type === 'album' }]}>{d.types[r.type]}</span>
+      <span class="mono">{r.date ? fmt(r.date) : r.year}</span>
+      {r.stat && <span class="tag red">{r.stat}</span>}
+    </div>
+    <h3>{r.title}</h3>
+    {r.with && <div class="mono" style="text-transform:none;letter-spacing:0">{d.with} {r.with.join(' · ')}</div>}
+    {r.langs && <div class="mono">{d.sung} {r.langs.map((l) => langNames[l]?.[lang] ?? l).join(' · ')}</div>}
+    {r.note?.[lang] && <p class="note">{r.note[lang]}</p>}
+    {links.length > 0 && <div class="links">{links.map(([n, u]) => <a href={u} target="_blank" rel="noopener">{n} ↗</a>)}</div>}
+  </div>
+</article>

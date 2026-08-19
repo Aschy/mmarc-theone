@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import { LANGS, SITE, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+import { videos } from '../../data/videos';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+const ld = [{ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: videos.map((v, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'VideoObject', name: v.title, thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`, embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`, url: `https://www.youtube.com/watch?v=${v.id}` } })) }];
+---
+<Base lang={lang} page="videos" jsonLd={ld}>
+  <div class="wrap page-head"><h1>{d.videos.title}</h1><p>{d.videos.sub}</p></div>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem">
+        <div><div class="mono">{d.videos.channel}</div><strong style="font-size:1.2rem">youtube.com/@MMARC-TheOne</strong> <span style="color:var(--ash)">· ≈ 136K {d.videos.subs}</span><p style="margin-top:0.4rem">{d.videos.playlistNote}</p></div>
+        <a class="btn btn-red" href={SITE.links.youtube} target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+      <div class="grid grid-2" style="gap:2rem">{videos.map((v) => <Video id={v.id} title={v.title} sub={v.stat} />)}</div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,10 @@
+---
+interface Props { id: string; title: string; sub?: string; }
+const { id, title, sub } = Astro.props;
+---
+<figure style="margin:0" class="reveal">
+  <div class="video">
+    <button class="yt-lite" data-id={id} aria-label={title} style={`background-image:url(https://i.ytimg.com/vi/${id}/hqdefault.jpg)`}></button>
+  </div>
+  <figcaption class="video-caption"><strong>{title}</strong>{sub && <span>{sub}</span>}</figcaption>
+</figure>

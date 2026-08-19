@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReleaseCard from '../../components/ReleaseCard.astro';
+import Video from '../../components/Video.astro';
+import { LANGS, SITE, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+import { featured, latest } from '../../data/releases';
+import { videos } from '../../data/videos';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+const fmt = (iso: string) => new Intl.DateTimeFormat(lang === 'ar' ? 'ar-TN' : lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+const p = (s: string) => `/${lang}/${s}/`;
+---
+<Base lang={lang} page="">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="mono hero-kicker">{d.hero.kicker}</div>
+        <h1><span>MMARC</span><span class="thin">TheONE</span></h1>
+        <p class="hero-tag">{d.hero.tagline}</p>
+        <div class="cta-row">
+          <a class="btn btn-red" href={SITE.links.spotify} target="_blank" rel="noopener">▶ {d.hero.listen}</a>
+          <a class="btn btn-ghost" href={p('presse')}>{d.hero.press}</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/img/photos/portrait-scarf.webp" alt="MMARC-TheONE — portrait" width="1200" height="1200" fetchpriority="high" />
+      </div>
+    </div>
+    <div class="wrap">
+      <aside class="fiche hero-fiche" aria-label={d.fiche.title}>
+        <div class="fiche-head"><span>{d.fiche.title}</span><img src="/img/logos/mmarc-clown.webp" alt="" /></div>
+        <dl>{d.fiche.rows.map(([k, v]) => <div class="row"><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="latest">
+    <div class="wrap">
+      <img src={latest.cover} alt={latest.title} width="96" height="96" />
+      <div>
+        <div class="mono" style="color:var(--red)">{d.hero.latest}</div>
+        <h2>{latest.title}</h2>
+        <div class="meta">{latest.date ? `${d.hero.latestLabel} ${fmt(latest.date)}` : latest.year}{latest.with ? ` · ${d.disco.with} ${latest.with.join(', ')}` : ''}</div>
+      </div>
+      <a class="btn btn-ghost" href={latest.apple ?? SITE.links.appleMusic} target="_blank" rel="noopener">{d.hero.listen} ↗</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="mono" style="margin-bottom:1rem">{d.home.manifesto.title}</p>
+      <p class="manifesto reveal">{d.home.manifesto.lines.map((l) => <span>{l}</span>)}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.home.featuredTitle}</h2><p>{d.home.featuredSub}</p></div>
+      <div class="grid grid-3">{featured.map((r) => <ReleaseCard r={r} lang={lang} />)}</div>
+      <p style="margin-top:1.5rem"><a class="btn btn-ghost" href={p('discographie')}>{d.home.allReleases} →</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div>
+        <div class="section-head"><h2>{d.home.aiTitle}</h2></div>
+        <p class="prose" style="color:var(--bone)">{d.home.aiBody}</p>
+      </div>
+      <div>
+        <div class="section-head"><h2>{d.home.themesTitle}</h2></div>
+        <div class="chips">{d.home.themes.map((th) => <span>{th}</span>)}</div>
+        <h3 style="font-size:1.6rem;margin:2rem 0 0.6rem">{d.home.langsTitle}</h3>
+        <p style="color:var(--bone)">{d.home.langsSub}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.home.watchTitle}</h2><p>{d.home.watchSub}</p></div>
+      <div class="grid grid-2">{videos.slice(0, 2).map((v) => <Video id={v.id} title={v.title} sub={v.stat} />)}</div>
+      <p style="margin-top:1.5rem"><a class="btn btn-ghost" href={p('videos')}>{d.home.allVideos} →</a></p>
+    </div>
+  </section>
+</Base>

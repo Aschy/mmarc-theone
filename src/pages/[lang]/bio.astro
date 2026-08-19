@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, SITE, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+const ld = [{ '@context': 'https://schema.org', '@type': 'ProfilePage', mainEntity: { '@id': `${SITE.url}/#artist` }, name: d.meta.bio.title, description: d.meta.bio.description }];
+---
+<Base lang={lang} page="bio" jsonLd={ld} image="/img/photos/portrait-clown-2024.webp">
+  <div class="wrap page-head"><h1>{d.bio.title}</h1><p>{d.bio.sub}</p></div>
+  <section class="section" style="padding-top:0">
+    <div class="wrap grid grid-2" style="align-items:start;gap:3rem">
+      <div class="prose">
+        <p class="lead">{d.bio.short}</p>
+        {d.bio.paragraphs.map((x) => <p>{x}</p>)}
+        <h3>{d.bio.personaTitle}</h3>
+        {d.bio.personaBody.map((x) => <p>{x}</p>)}
+        <h3>{d.bio.methodTitle}</h3>
+        {d.bio.methodBody.map((x) => <p>{x}</p>)}
+        <blockquote>{d.bio.quote}</blockquote>
+      </div>
+      <div style="display:grid;gap:1.25rem;position:sticky;top:90px">
+        <img src="/img/photos/portrait-red-suit.webp" alt="MMARC-TheONE, portrait en costume rouge" loading="lazy" style="border-radius:var(--radius)" />
+        <div class="grid grid-2">
+          <img src="/img/photos/portrait-clown-2024.webp" alt="MMARC-TheONE, portrait 2024" loading="lazy" style="border-radius:var(--radius);aspect-ratio:1;object-fit:cover" />
+          <img src="/img/photos/studio-desk.webp" alt="MMARC-TheONE en studio" loading="lazy" style="border-radius:var(--radius);aspect-ratio:1;object-fit:cover" />
+        </div>
+        <aside class="fiche" aria-label={d.fiche.title}>
+          <div class="fiche-head"><span>{d.fiche.title}</span><img src="/img/logos/mmarc-clown.webp" alt="" /></div>
+          <dl>{d.fiche.rows.map(([k, v]) => <div class="row"><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Base>

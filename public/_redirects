@@ -1,0 +1,5 @@
+# Language detection on the root URL, then a hard default to French
+/   /en/   302  Language=en
+/   /ar/   302  Language=ar
+/   /es/   302  Language=es
+/   /fr/   302

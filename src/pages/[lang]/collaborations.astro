@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, SITE, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+---
+<Base lang={lang} page="collaborations" image="/img/photos/klara-mmarc.webp">
+  <div class="wrap page-head"><h1>{d.collabs.title}</h1><p>{d.collabs.sub}</p></div>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="grid grid-3">
+        {d.collabs.people.map((c, i) => (
+          <article class="card reveal">
+            {i === 0 && <img src="/img/photos/klara-mmarc.webp" alt="Klara-V et MMARC-TheONE" loading="lazy" style="border-radius:var(--radius);margin-bottom:1rem;aspect-ratio:16/10;object-fit:cover" />}
+            <h3>{c.name}</h3><div class="role">{c.role}</div><p>{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.collabs.bookingTitle}</h2><p>{d.collabs.bookingBody}</p></div>
+      <div class="grid grid-4">{d.collabs.offers.map((o) => <div class="card reveal"><h3 style="font-size:1.35rem">{o.title}</h3><p>{o.body}</p></div>)}</div>
+      <p style="margin-top:2rem"><a class="btn btn-red" href={`mailto:${SITE.email}?subject=Collaboration%20MMARC-TheONE`}>{d.collabs.cta} → {SITE.email}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+import { SITE, LANGS, LANG_LABEL, isRTL, type Lang } from '../data/site';
+import { t, type PageKey } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  title?: string;
+  description?: string;
+  image?: string;
+  jsonLd?: object[];
+}
+const { lang, page, title, description, image = '/og-default.jpg', jsonLd = [] } = Astro.props;
+const dict = t(lang);
+const meta = dict.meta[page];
+const pageTitle = title ?? meta.title;
+const pageDesc = description ?? meta.description;
+const path = (l: Lang, p: PageKey = page) => `/${l}/${p ? p + '/' : ''}`;
+const canonical = new URL(path(lang), SITE.url).href;
+const ogLocale: Record<Lang, string> = { fr: 'fr_FR', en: 'en_US', ar: 'ar_AR', es: 'es_ES' };
+const rtl = isRTL(lang);
+
+const fonts = rtl
+  ? 'https://fonts.googleapis.com/css2?family=Changa:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Big+Shoulders+Display:wght@700;900&display=swap'
+  : 'https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+
+const artistLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  '@id': `${SITE.url}/#artist`,
+  name: 'MMARC-TheONE',
+  alternateName: ['MM:ONE', 'MMARC', 'MMARC-TheOne'],
+  url: SITE.url,
+  image: `${SITE.url}/img/photos/portrait-scarf.webp`,
+  logo: `${SITE.url}/img/logos/mmarc-clown.webp`,
+  description: dict.bio.short,
+  genre: ['Afro House', 'Afro Tech House', 'Electronic', 'Nightcore', 'French Touch', 'Rap'],
+  foundingDate: '2024',
+  foundingLocation: { '@type': 'Place', name: 'Paris, France' },
+  email: SITE.email,
+  sameAs: [SITE.links.youtube, SITE.links.spotify, SITE.links.appleMusic, SITE.links.deezer, SITE.links.instagram, SITE.links.tiktok, SITE.links.linktree],
+};
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  url: SITE.url,
+  name: 'MMARC-TheONE — Official',
+  inLanguage: LANGS,
+  publisher: { '@id': `${SITE.url}/#artist` },
+};
+const allLd = [artistLd, websiteLd, ...jsonLd];
+---
+<!doctype html>
+<html lang={lang} dir={rtl ? 'rtl' : 'ltr'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={canonical} />
+    {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(path(l), SITE.url).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(path('fr'), SITE.url).href} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0b0a0c" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="MMARC-TheONE" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, SITE.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    {LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={new URL(image, SITE.url).href} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fonts} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(allLd)} />
+  </head>
+  <body>
+    <script>document.documentElement.classList.add('js')</script>
+    <a class="sr-only" href="#main">{lang === 'fr' ? 'Aller au contenu' : lang === 'en' ? 'Skip to content' : lang === 'ar' ? 'انتقل إلى المحتوى' : 'Ir al contenido'}</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={path(lang, '')} aria-label="MMARC-TheONE">
+          <img src="/img/logos/mmarc-clown.webp" alt="" width="34" height="34" /><span dir="ltr">MMARC<em>-</em>TheONE</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav" data-nav-toggle>Menu</button>
+        <nav class="nav" id="nav" aria-label="Main">
+          {(['', 'bio', 'discographie', 'videos', 'collaborations', 'presse', 'chronologie'] as PageKey[]).map((p) => (
+            <a href={path(lang, p)} aria-current={p === page ? 'page' : undefined}>{dict.nav[p]}</a>
+          ))}
+          <details class="lang">
+            <summary aria-label={dict.footer.langLabel}>{lang.toUpperCase()} ▾</summary>
+            <ul>
+              {LANGS.map((l) => (
+                <li><a href={path(l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{LANG_LABEL[l]}</a></li>
+              ))}
+            </ul>
+          </details>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="top">
+          <div>
+            <a class="brand" href={path(lang, "")}><img src="/img/logos/mmarc-clown.webp" alt="" width="34" height="34" /><span dir="ltr">MMARC<em>-</em>TheONE</span></a>
+            <p style="color:var(--bone);margin-top:0.8rem;max-width:40ch">{dict.hero.tagline}</p>
+            <p class="mono" style="margin-top:0.8rem">{dict.hero.kicker}</p>
+          </div>
+          <div>
+            <h4>{dict.footer.contact}</h4>
+            <ul>
+              <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+              <li><a href={SITE.links.youtube} rel="me noopener" target="_blank">YouTube</a></li>
+              <li><a href={SITE.links.spotify} rel="me noopener" target="_blank">Spotify</a></li>
+              <li><a href={SITE.links.appleMusic} rel="me noopener" target="_blank">Apple Music</a></li>
+              <li><a href={SITE.links.deezer} rel="me noopener" target="_blank">Deezer</a></li>
+              <li><a href={SITE.links.instagram} rel="me noopener" target="_blank">Instagram</a></li>
+              <li><a href={SITE.links.tiktok} rel="me noopener" target="_blank">TikTok</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>{dict.footer.store}</h4>
+            <p style="color:var(--bone);font-size:0.95rem">{dict.footer.storeBody}</p>
+            <a class="btn btn-ghost btn-sm" href={SITE.links.ceriseStore} target="_blank" rel="noopener">cerise-store.com ↗</a>
+          </div>
+        </div>
+        <div class="bottom">
+          <span>© {new Date().getFullYear()} MMARC-TheONE (MM:ONE). {dict.footer.rights}</span>
+          <span>{dict.footer.madeWith}</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.querySelector('[data-nav-toggle]');
+      const nav = document.getElementById('nav');
+      btn?.addEventListener('click', () => {
+        const open = nav!.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      // reveal on scroll
+      const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      setTimeout(() => document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in')), 1800);
+      // lite youtube
+      document.querySelectorAll<HTMLElement>('.yt-lite').forEach((el) => {
+        el.addEventListener('click', () => {
+          const id = el.dataset.id!;
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          iframe.title = el.getAttribute('aria-label') || 'YouTube';
+          el.replaceWith(iframe);
+        }, { once: true });
+      });
+      // copy buttons
+      document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
+        b.addEventListener('click', async () => {
+          const src = document.getElementById(b.dataset.copy!);
+          if (!src) return;
+          await navigator.clipboard.writeText(src.textContent?.trim() || '');
+          const old = b.textContent; b.textContent = b.dataset.copied || '✓';
+          setTimeout(() => (b.textContent = old), 1500);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, SITE, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+const p = (s: string) => `/${lang}/${s}/`;
+const logos = [
+  { file: '/img/logos/mmarc-clown.webp', name: 'MMARC — clown mark' },
+  { file: '/img/logos/radio-ready.webp', name: 'Radio Ready' },
+  { file: '/img/logos/boost.webp', name: 'Boost' },
+  { file: '/img/logos/brut.webp', name: 'Brut' },
+];
+---
+<Base lang={lang} page="presse">
+  <div class="wrap page-head"><h1>{d.press.title}</h1><p>{d.press.sub}</p></div>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div class="press-block reveal">
+        <h3>{d.press.bioShort}</h3>
+        <p id="bio-short">{d.press.bioShortText}</p>
+        <div class="press-actions"><button class="btn btn-ghost btn-sm" data-copy="bio-short" data-copied={d.press.copied}>{d.press.copy}</button></div>
+      </div>
+      <div class="press-block reveal">
+        <h3>{d.press.bioMedium}</h3>
+        <p id="bio-medium">{d.press.bioMediumText}</p>
+        <div class="press-actions"><button class="btn btn-ghost btn-sm" data-copy="bio-medium" data-copied={d.press.copied}>{d.press.copy}</button> <a class="btn btn-ghost btn-sm" href={p('bio')}>{d.press.bioLong} →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.press.factsTitle}</h2></div>
+      <dl class="facts reveal">{d.press.facts.map(([k, v]) => <div class="row"><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.press.assetsTitle}</h2><p>© MMARC-TheONE</p></div>
+      <div class="grid grid-3">
+        {d.press.assets.map((a) => (
+          <a class="asset reveal" href={a.file} download target="_blank">
+            <div class="thumb"><img src={a.file} alt={a.label} loading="lazy" /></div>
+            <div class="cap"><strong>{a.label}</strong><span>{a.kind} · {d.press.download} ↓</span></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.press.logosTitle}</h2></div>
+      <div class="grid grid-4">{logos.map((l) => <a class="asset reveal" href={l.file} download><div class="logo-tile"><img src={l.file} alt={l.name} loading="lazy" /></div><div class="cap"><strong>{l.name}</strong><span>{d.press.download} ↓</span></div></a>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{d.press.contactTitle}</h2><p>{d.press.contactBody}</p></div>
+      <a class="btn btn-red" href={`mailto:${SITE.email}?subject=Presse%20MMARC-TheONE`}>{SITE.email}</a>
+    </div>
+  </section>
+</Base>

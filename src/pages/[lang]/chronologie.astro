@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, type Lang } from '../../data/site';
+import { t } from '../../i18n/ui';
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+---
+<Base lang={lang} page="chronologie">
+  <div class="wrap page-head"><h1>{d.chrono.title}</h1><p>{d.chrono.sub}</p></div>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <ol class="timeline">
+        {d.chrono.events.map((e) => (
+          <li class="reveal"><div class="when">{e.date}</div><div><h3>{e.title}</h3><p>{e.body}</p></div></li>
+        ))}
+      </ol>
+      <div class="card" style="margin-top:2.5rem;max-width:70ch"><h3 style="font-size:1.2rem">{d.chrono.sourcesTitle}</h3><p>{d.chrono.sourcesBody}</p></div>
+    </div>
+  </section>
+</Base>
