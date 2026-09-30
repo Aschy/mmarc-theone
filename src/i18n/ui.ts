@@ -7,7 +7,7 @@ export type PageKey = (typeof PAGES)[number];
 type Dict = {
   nav: Record<PageKey, string>;
   meta: Record<PageKey, { title: string; description: string }>;
-  hero: { kicker: string; tagline: string; listen: string; press: string; latest: string; latestLabel: string };
+  hero: { kicker: string; tagline: string; listen: string; press: string; latest: string; latestLabel: string; film: string };
   fiche: { title: string; rows: [string, string][] };
   home: {
     manifesto: { title: string; lines: string[] };
@@ -41,7 +41,7 @@ export const ui: Record<Lang, Dict> = {
       presse: { title: 'Dossier de presse (EPK) — MMARC-TheONE', description: 'Kit presse officiel de MMARC-TheONE : biographies courte, moyenne et longue, faits & chiffres vérifiables, photos HD, logos, contact presse.' },
       chronologie: { title: 'Chronologie du projet — MMARC-TheONE', description: 'Repères datés du projet MMARC-TheONE de 2024 à aujourd\u2019hui : albums, singles marquants, collaborations, jalons de la chaîne YouTube.' },
     },
-    hero: { kicker: 'Site officiel · Paris', tagline: 'Électronique underground × street art × fusion culturelle. Un clown qui dit des vérités en musique, en cinq langues.', listen: 'Écouter', press: 'Dossier de presse', latest: 'Dernière sortie', latestLabel: 'Sortie du' },
+    hero: { kicker: 'Site officiel · Paris', tagline: 'Électronique underground × street art × fusion culturelle. Un clown qui dit des vérités en musique, en quatre langues.', listen: 'Écouter', press: 'Dossier de presse', latest: 'Dernière sortie', latestLabel: 'Sortie du', film: 'Le film MMARC-TheONE' },
     fiche: {
       title: 'Fiche d\u2019identité',
       rows: [
@@ -50,16 +50,18 @@ export const ui: Record<Lang, Dict> = {
         ['Actif depuis', '2024'],
         ['Base', 'Paris, France'],
         ['Genres', 'Afro House · Afro Tech · électro nightcore · French touch · rap'],
-        ['Langues', 'Français · anglais · arabe · espagnol · ukrainien'],
+        ['Langues', 'Français · anglais · arabe · espagnol'],
         ['Albums', 'Symphonie IA (2024) · Carnaval Halluciné (2025)'],
-        ['Distribution', 'DistroKid → Spotify, Apple Music, Deezer, YouTube'],
+        ['Catalogue', '50+ sorties depuis 2024'],
+        ['À écouter', 'YouTube — @MMARC-TheOne'],
+        ['Contact', 'mmarc@greensauce.io'],
       ],
     },
     home: {
       manifesto: { title: 'Manifeste', lines: ['On brise les frontières.', 'On fusionne les mondes.', 'On transmet des messages par l\u2019art.'] },
       featuredTitle: 'Sorties marquantes', featuredSub: 'Les titres qui racontent le projet.',
       themesTitle: 'Thèmes récurrents', themes: ['Fracture sociale', 'Urgence climatique', 'Fusion humain / machine', 'Humour noir', 'Ponts culturels', 'Résistance underground'],
-      langsTitle: 'Cinq langues, un seul projet', langsSub: 'Français pour la poésie électronique, anglais pour la portée internationale, espagnol pour l\u2019underground latin, arabe pour le dialogue des cultures, ukrainien pour la solidarité.',
+      langsTitle: 'Quatre langues, un seul projet', langsSub: 'Français pour la poésie électronique, anglais pour la portée internationale, espagnol pour l\u2019underground latin, arabe pour le dialogue des cultures.',
       watchTitle: 'À voir', watchSub: 'Les vidéos qui ont fait décoller la chaîne.',
       allReleases: 'Voir toute la discographie', allVideos: 'Toutes les vidéos',
       aiTitle: 'Une méthode assumée : IA + humain', aiBody: 'Le projet revendique l\u2019intelligence artificielle comme instrument, au même titre qu\u2019une boîte à rythmes ou un sampler : génération et séparation de stems, prompts de style, puis reprise en main humaine — voix réelles, percussions, édition, mixage. Ce qui est généré est dit ; ce qui est joué est joué.',
@@ -70,7 +72,7 @@ export const ui: Record<Lang, Dict> = {
       paragraphs: [
         'MMARC-TheONE, alias MM:ONE, est un artiste multidisciplinaire qui circule entre la musique, l\u2019image et l\u2019expérimentation numérique. Le projet naît en 2024 avec l\u2019album « Symphonie IA : La Révolution Mélodique du Futur », un premier geste qui pose la ligne : utiliser tous les outils disponibles — caméras argentiques, studios, intelligence artificielle, esthétique du street art — pour dire quelque chose du monde.',
         'Depuis, la discographie s\u2019est étoffée à un rythme soutenu : plus de quarante titres, un second album, « Carnaval Halluciné (Fragments 2025) », et une série de remixes Afro House qui revisitent des standards populaires de plusieurs cultures, à commencer par « Sidi Mansour ». Le remix « Sidi Mansour × Papa Où T\u2019es » a dépassé les 96 000 vues sur YouTube ; « Mode Avion », en duo avec Klara-V, a franchi les 240 000.',
-        'Le projet refuse toute case : rap, Afro House, collaborations avec des voix comme Akrout Bouras ou Sarra, et un jeu permanent avec les frontières linguistiques : les titres passent du français à l\u2019anglais, à l\u2019arabe, à l\u2019espagnol et à l\u2019ukrainien, souvent dans le même morceau.',
+        'Le projet refuse toute case : rap, Afro House, collaborations avec des voix comme Akrout Bouras ou Sarra, et un jeu permanent avec les frontières linguistiques : les titres passent du français à l\u2019anglais, à l\u2019arabe et à l\u2019espagnol, souvent dans le même morceau.',
         'En 2026, la trilogie « M » (Premier M, Deuxième M « Signal On », Troisième M) marque un tournant plus intime : electro nightcore au concept « happy-sad », codes numériques cachés (13-13-1) et souvenirs d\u2019enfance. La même année, « Sidi Ciel (Club House) », mashup de « CIEL » (GIMS) et de « Sidi Mansour » porté par une voix humaine et des percussions jouées, condense la méthode : machine et main.',
       ],
       personaTitle: 'Le persona', personaBody: [
@@ -109,8 +111,8 @@ export const ui: Record<Lang, Dict> = {
     },
     press: {
       title: 'Presse & médias', sub: 'Dossier de presse officiel. Tout ce qui est ici peut être cité et réutilisé avec la mention « © MMARC-TheONE ».',
-      bioShort: 'Bio courte (≈ 40 mots)', bioShortText: 'MMARC-TheONE (MM:ONE) est un artiste et producteur électronique basé à Paris. Actif depuis 2024, il mêle Afro House, électro et rap dans cinq langues, sous un persona de clown à l\u2019afro rouge, en assumant l\u2019IA comme instrument.',
-      bioMedium: 'Bio moyenne (≈ 100 mots)', bioMediumText: 'MMARC-TheONE, alias MM:ONE, est un artiste multidisciplinaire basé à Paris. Lancé en 2024 avec l\u2019album « Symphonie IA », le projet compte deux albums et plus de quarante titres, dont les remixes Afro House « Sidi Mansour × Papa Où T\u2019es » (96K vues YouTube) et « Mode Avion » avec Klara-V (240K vues). Il chante en français, anglais, arabe, espagnol et ukrainien, collabore avec d\u2019autres voix (Akrout Bouras, Sarra) et revendique une méthode hybride où l\u2019IA génère et l\u2019humain reprend la main. Son persona de clown à la chevelure rouge — drôle, inquiétant, mélancolique — est le fil rouge de son univers visuel.',
+      bioShort: 'Bio courte (≈ 40 mots)', bioShortText: 'MMARC-TheONE (MM:ONE) est un artiste et producteur électronique basé à Paris. Actif depuis 2024, il mêle Afro House, électro et rap dans quatre langues, sous un persona de clown à l\u2019afro rouge, en assumant l\u2019IA comme instrument.',
+      bioMedium: 'Bio moyenne (≈ 100 mots)', bioMediumText: 'MMARC-TheONE, alias MM:ONE, est un artiste multidisciplinaire basé à Paris. Lancé en 2024 avec l\u2019album « Symphonie IA », le projet compte deux albums et plus de quarante titres, dont les remixes Afro House « Sidi Mansour × Papa Où T\u2019es » (96K vues YouTube) et « Mode Avion » avec Klara-V (240K vues). Il chante en français, anglais, arabe et espagnol, collabore avec d\u2019autres voix (Akrout Bouras, Sarra) et revendique une méthode hybride où l\u2019IA génère et l\u2019humain reprend la main. Son persona de clown à la chevelure rouge — drôle, inquiétant, mélancolique — est le fil rouge de son univers visuel.',
       bioLong: 'Bio longue',
       factsTitle: 'Faits & chiffres',
       facts: [
@@ -118,13 +120,13 @@ export const ui: Record<Lang, Dict> = {
         ['Base', 'Paris, France'],
         ['Début du projet', '19 septembre 2024 (album « Symphonie IA : La Révolution Mélodique du Futur »)'],
         ['Albums', '2 — Symphonie IA (19/09/2024), Carnaval Halluciné (17/10/2025)'],
-        ['Titres publiés', '40+ (singles, remixes, mashups, edits) au 19 août 2026'],
+        ['Titres publiés', '50+ (singles, remixes, mashups, edits) au 1er octobre 2026'],
         ['Vidéo la plus vue', '« Mode Avion » feat. Klara-V — 240 000+ vues YouTube'],
         ['Remix phare', '« Sidi Mansour × Papa Où T\u2019es (Afro House Remix) » — 96 000+ vues YouTube'],
         ['Chaîne YouTube', '≈ 136 000 abonnés'],
         ['Dernière sortie', '« Sidi Ciel (Club House) » — 14 août 2026'],
-        ['Langues chantées', 'Français, anglais, arabe, espagnol, ukrainien'],
-        ['Distribution', 'DistroKid (Spotify, Apple Music, Deezer, YouTube Music)'],
+        ['Langues chantées', 'Français, anglais, arabe, espagnol'],
+        ['Site officiel', 'mmarc-theone.com'],
         ['Contact presse', 'mmarc@greensauce.io'],
       ],
       assetsTitle: 'Photos HD',
@@ -168,7 +170,7 @@ export const ui: Record<Lang, Dict> = {
       presse: { title: 'Press kit (EPK) — MMARC-TheONE', description: 'Official press kit for MMARC-TheONE: short, medium and long bios, verifiable facts & figures, HD photos, logos, press contact.' },
       chronologie: { title: 'Project timeline — MMARC-TheONE', description: 'Dated milestones of the MMARC-TheONE project from 2024 to today: albums, key singles, collaborations, YouTube channel milestones.' },
     },
-    hero: { kicker: 'Official site · Paris', tagline: 'Underground electronic × street art × cultural fusion. A clown telling truths through music, in five languages.', listen: 'Listen', press: 'Press kit', latest: 'Latest release', latestLabel: 'Released' },
+    hero: { kicker: 'Official site · Paris', tagline: 'Underground electronic × street art × cultural fusion. A clown telling truths through music, in four languages.', listen: 'Listen', press: 'Press kit', latest: 'Latest release', latestLabel: 'Released', film: 'The MMARC-TheONE film' },
     fiche: {
       title: 'Identity card',
       rows: [
@@ -177,16 +179,18 @@ export const ui: Record<Lang, Dict> = {
         ['Active since', '2024'],
         ['Based in', 'Paris, France'],
         ['Genres', 'Afro House · Afro Tech · electro nightcore · French touch · rap'],
-        ['Languages', 'French · English · Arabic · Spanish · Ukrainian'],
+        ['Languages', 'French · English · Arabic · Spanish'],
         ['Albums', 'Symphonie IA (2024) · Carnaval Halluciné (2025)'],
-        ['Distribution', 'DistroKid → Spotify, Apple Music, Deezer, YouTube'],
+        ['Catalogue', '50+ releases since 2024'],
+        ['Listen', 'YouTube — @MMARC-TheOne'],
+        ['Contact', 'mmarc@greensauce.io'],
       ],
     },
     home: {
       manifesto: { title: 'Manifesto', lines: ['We break borders.', 'We fuse worlds.', 'We transmit messages through art.'] },
       featuredTitle: 'Key releases', featuredSub: 'The tracks that tell the story.',
       themesTitle: 'Recurring themes', themes: ['Social fracture', 'Climate urgency', 'Human / machine fusion', 'Dark humour', 'Cultural bridges', 'Underground resistance'],
-      langsTitle: 'Five languages, one project', langsSub: 'French for electronic poetry, English for international reach, Spanish for the Latin underground, Arabic for cross-cultural dialogue, Ukrainian for solidarity.',
+      langsTitle: 'Four languages, one project', langsSub: 'French for electronic poetry, English for international reach, Spanish for the Latin underground, Arabic for cross-cultural dialogue.',
       watchTitle: 'Watch', watchSub: 'The videos that made the channel take off.',
       allReleases: 'See the full discography', allVideos: 'All videos',
       aiTitle: 'An open method: AI + human', aiBody: 'The project treats artificial intelligence as an instrument, like a drum machine or a sampler: stem generation and separation, style prompts, then human hands take over — real voices, percussion, editing, mixing. What is generated is stated; what is played is played.',
@@ -197,7 +201,7 @@ export const ui: Record<Lang, Dict> = {
       paragraphs: [
         'MMARC-TheONE, aka MM:ONE, is a multidisciplinary artist moving between music, image and digital experimentation. The project began in 2024 with the album "Symphonie IA: La Révolution Mélodique du Futur", a first statement that set the line: use every available tool — film cameras, studios, artificial intelligence, street-art aesthetics — to say something about the world.',
         'Since then the catalogue has grown quickly: over forty tracks, a second album, "Carnaval Halluciné (Fragments 2025)", and a series of Afro House remixes revisiting popular standards from several cultures, starting with "Sidi Mansour". The "Sidi Mansour × Papa Où T\u2019es" remix passed 96,000 YouTube views; "Mode Avion", a duet with Klara-V, passed 240,000.',
-        'The project refuses every box: rap, Afro House, collaborations with voices such as Akrout Bouras or Sarra, and a constant play with linguistic borders: tracks switch between French, English, Arabic, Spanish and Ukrainian, often within the same song.',
+        'The project refuses every box: rap, Afro House, collaborations with voices such as Akrout Bouras or Sarra, and a constant play with linguistic borders: tracks switch between French, English, Arabic and Spanish, often within the same song.',
         'In 2026 the "M" trilogy (Premier M, Deuxième M "Signal On", Troisième M) marks a more intimate turn: electro nightcore with a "happy-sad" concept, hidden numeric codes (13-13-1) and childhood memories. The same year, "Sidi Ciel (Club House)", a mashup of "CIEL" (GIMS) and "Sidi Mansour" carried by a human voice and played percussion, condenses the method: machine and hand.',
       ],
       personaTitle: 'The persona', personaBody: [
@@ -236,8 +240,8 @@ export const ui: Record<Lang, Dict> = {
     },
     press: {
       title: 'Press & media', sub: 'Official press kit. Everything here may be quoted and reused with the credit "© MMARC-TheONE".',
-      bioShort: 'Short bio (≈ 40 words)', bioShortText: 'MMARC-TheONE (MM:ONE) is a electronic artist and producer based in Paris. Active since 2024, he blends Afro House, electro and rap in five languages under a red-afro clown persona, openly using AI as an instrument.',
-      bioMedium: 'Medium bio (≈ 100 words)', bioMediumText: 'MMARC-TheONE, aka MM:ONE, is a multidisciplinary artist based in Paris. Launched in 2024 with the album "Symphonie IA", the project counts two albums and over forty tracks, including the Afro House remixes "Sidi Mansour × Papa Où T\u2019es" (96K YouTube views) and "Mode Avion" with Klara-V (240K views). He sings in French, English, Arabic, Spanish and Ukrainian, collaborates with other voices (Akrout Bouras, Sarra) and claims a hybrid method where AI generates and the human takes over. His red-haired clown persona — funny, unsettling, melancholic — is the thread of his visual world.',
+      bioShort: 'Short bio (≈ 40 words)', bioShortText: 'MMARC-TheONE (MM:ONE) is an electronic artist and producer based in Paris. Active since 2024, he blends Afro House, electro and rap in four languages under a red-afro clown persona, openly using AI as an instrument.',
+      bioMedium: 'Medium bio (≈ 100 words)', bioMediumText: 'MMARC-TheONE, aka MM:ONE, is a multidisciplinary artist based in Paris. Launched in 2024 with the album "Symphonie IA", the project counts two albums and over forty tracks, including the Afro House remixes "Sidi Mansour × Papa Où T\u2019es" (96K YouTube views) and "Mode Avion" with Klara-V (240K views). He sings in French, English, Arabic and Spanish, collaborates with other voices (Akrout Bouras, Sarra) and claims a hybrid method where AI generates and the human takes over. His red-haired clown persona — funny, unsettling, melancholic — is the thread of his visual world.',
       bioLong: 'Long bio',
       factsTitle: 'Facts & figures',
       facts: [
@@ -245,13 +249,13 @@ export const ui: Record<Lang, Dict> = {
         ['Base', 'Paris, France'],
         ['Project start', '19 September 2024 (album "Symphonie IA: La Révolution Mélodique du Futur")'],
         ['Albums', '2 — Symphonie IA (19/09/2024), Carnaval Halluciné (17/10/2025)'],
-        ['Released tracks', '40+ (singles, remixes, mashups, edits) as of 19 August 2026'],
+        ['Released tracks', '50+ (singles, remixes, mashups, edits) as of 1 October 2026'],
         ['Most-viewed video', '"Mode Avion" feat. Klara-V — 240,000+ YouTube views'],
         ['Flagship remix', '"Sidi Mansour × Papa Où T\u2019es (Afro House Remix)" — 96,000+ YouTube views'],
         ['YouTube channel', '≈ 136,000 subscribers'],
         ['Latest release', '"Sidi Ciel (Club House)" — 14 August 2026'],
-        ['Languages sung', 'French, English, Arabic, Spanish, Ukrainian'],
-        ['Distribution', 'DistroKid (Spotify, Apple Music, Deezer, YouTube Music)'],
+        ['Languages sung', 'French, English, Arabic, Spanish'],
+        ['Official site', 'mmarc-theone.com'],
         ['Press contact', 'mmarc@greensauce.io'],
       ],
       assetsTitle: 'HD photos',
@@ -295,7 +299,7 @@ export const ui: Record<Lang, Dict> = {
       presse: { title: 'الملف الصحفي (EPK) — MMARC-TheONE', description: 'الملف الصحفي الرسمي لـ MMARC-TheONE: سيرة قصيرة ومتوسطة وطويلة، حقائق وأرقام قابلة للتحقق، صور عالية الدقة، شعارات، جهة اتصال صحفية.' },
       chronologie: { title: 'الخط الزمني للمشروع — MMARC-TheONE', description: 'محطات مؤرّخة لمشروع MMARC-TheONE من 2024 حتى اليوم: ألبومات، أغانٍ بارزة، تعاونات، محطات قناة يوتيوب.' },
     },
-    hero: { kicker: 'الموقع الرسمي · باريس', tagline: 'إلكترونيك أندرغراوند × فن الشارع × مزج ثقافي. مهرّج يقول الحقائق بالموسيقى، بخمس لغات.', listen: 'استمع', press: 'الملف الصحفي', latest: 'أحدث إصدار', latestLabel: 'صدر في' },
+    hero: { kicker: 'الموقع الرسمي · باريس', tagline: 'إلكترونيك أندرغراوند × فن الشارع × مزج ثقافي. مهرّج يقول الحقائق بالموسيقى، بأربع لغات.', listen: 'استمع', press: 'الملف الصحفي', latest: 'أحدث إصدار', latestLabel: 'صدر في', film: 'فيلم MMARC-TheONE' },
     fiche: {
       title: 'بطاقة تعريف',
       rows: [
@@ -304,16 +308,18 @@ export const ui: Record<Lang, Dict> = {
         ['نشط منذ', '2024'],
         ['المقر', 'باريس، فرنسا'],
         ['الأنواع', 'أفرو هاوس · أفرو تِك · إلكترو نايتكور · فرنش تاتش · راب'],
-        ['اللغات', 'الفرنسية · الإنجليزية · العربية · الإسبانية · الأوكرانية'],
+        ['اللغات', 'الفرنسية · الإنجليزية · العربية · الإسبانية'],
         ['الألبومات', 'Symphonie IA (2024) · Carnaval Halluciné (2025)'],
-        ['التوزيع', 'DistroKid → Spotify، Apple Music، Deezer، YouTube'],
+        ['الكتالوج', 'أكثر من 50 إصدارًا منذ 2024'],
+        ['للاستماع', 'YouTube — @MMARC-TheOne'],
+        ['اتصال', 'mmarc@greensauce.io'],
       ],
     },
     home: {
       manifesto: { title: 'البيان', lines: ['نكسر الحدود.', 'نمزج العوالم.', 'ننقل الرسائل عبر الفن.'] },
       featuredTitle: 'إصدارات بارزة', featuredSub: 'الأعمال التي تروي المشروع.',
       themesTitle: 'مواضيع متكررة', themes: ['الانقسام الاجتماعي', 'الطوارئ المناخية', 'اندماج الإنسان والآلة', 'الفكاهة السوداء', 'الجسور الثقافية', 'المقاومة الأندرغراوند'],
-      langsTitle: 'خمس لغات، مشروع واحد', langsSub: 'الفرنسية للشعر الإلكتروني، الإنجليزية للامتداد العالمي، الإسبانية للأندرغراوند اللاتيني، العربية لحوار الثقافات، الأوكرانية للتضامن.',
+      langsTitle: 'أربع لغات، مشروع واحد', langsSub: 'الفرنسية للشعر الإلكتروني، الإنجليزية للامتداد العالمي، الإسبانية للأندرغراوند اللاتيني، العربية لحوار الثقافات.',
       watchTitle: 'شاهد', watchSub: 'الفيديوهات التي أطلقت القناة.',
       allReleases: 'كل الأعمال', allVideos: 'كل الفيديوهات',
       aiTitle: 'منهج معلَن: ذكاء اصطناعي + إنسان', aiBody: 'يتعامل المشروع مع الذكاء الاصطناعي كأداة، تمامًا مثل آلة الإيقاع أو السامبلر: توليد وفصل المسارات، كتابة الأوامر الأسلوبية، ثم تتولى اليد البشرية: أصوات حقيقية، إيقاعات، مونتاج، مكساج. ما يُولَّد يُصرَّح به؛ وما يُعزَف يُعزَف.',
@@ -324,7 +330,7 @@ export const ui: Record<Lang, Dict> = {
       paragraphs: [
         'MMARC-TheONE، المعروف أيضًا بـ MM:ONE، فنان متعدد التخصصات يتنقل بين الموسيقى والصورة والتجريب الرقمي. وُلد المشروع سنة 2024 مع ألبوم «Symphonie IA : La Révolution Mélodique du Futur»، وهو بيان أول رسم الخط: استخدام كل الأدوات المتاحة — كاميرات فيلمية، استوديوهات، ذكاء اصطناعي، جماليات فن الشارع — لقول شيء عن العالم.',
         'منذ ذلك الحين توسّعت الأعمال بوتيرة سريعة: أكثر من أربعين عملًا، ألبوم ثانٍ «Carnaval Halluciné (Fragments 2025)»، وسلسلة ريمكسات أفرو هاوس تعيد قراءة أغانٍ شعبية من ثقافات عدة، بدءًا بـ «سيدي منصور». تجاوز ريمكس «سيدي منصور × Papa Où T\u2019es» 96 ألف مشاهدة على يوتيوب؛ و«Mode Avion» بالاشتراك مع Klara-V تجاوز 240 ألفًا.',
-        'المشروع يرفض أي تصنيف: راب، أفرو هاوس، تعاونات مع أصوات مثل عكروت بوراس أو سارة، ولعب دائم على الحدود اللغوية: تتنقل الأغاني بين الفرنسية والإنجليزية والعربية والإسبانية والأوكرانية، غالبًا داخل الأغنية نفسها.',
+        'المشروع يرفض أي تصنيف: راب، أفرو هاوس، تعاونات مع أصوات مثل عكروت بوراس أو سارة، ولعب دائم على الحدود اللغوية: تتنقل الأغاني بين الفرنسية والإنجليزية والعربية والإسبانية، غالبًا داخل الأغنية نفسها.',
         'في 2026 تمثّل ثلاثية «M» (Premier M، Deuxième M «Signal On»، Troisième M) منعطفًا أكثر حميمية: إلكترو نايتكور بمفهوم «happy-sad»، شفرات رقمية مخفية (13-13-1) وذكريات طفولة. وفي السنة نفسها، «Sidi Ciel (Club House)»، مزج بين «CIEL» (GIMS) و«سيدي منصور» يحمله صوت بشري وإيقاعات معزوفة، يلخّص المنهج: الآلة واليد.',
       ],
       personaTitle: 'الشخصية', personaBody: [
@@ -363,8 +369,8 @@ export const ui: Record<Lang, Dict> = {
     },
     press: {
       title: 'الصحافة والإعلام', sub: 'الملف الصحفي الرسمي. كل ما هنا يمكن اقتباسه وإعادة استخدامه مع الإشارة «© MMARC-TheONE».',
-      bioShort: 'سيرة قصيرة (≈ 40 كلمة)', bioShortText: 'MMARC-TheONE (MM:ONE) فنان ومنتج إلكتروني مقيم في باريس. نشط منذ 2024، يمزج الأفرو هاوس والإلكترو والراب بخمس لغات، بشخصية مهرّج ذي شعر أحمر، مستخدمًا الذكاء الاصطناعي علنًا كأداة.',
-      bioMedium: 'سيرة متوسطة (≈ 100 كلمة)', bioMediumText: 'MMARC-TheONE، المعروف بـ MM:ONE، فنان متعدد التخصصات مقيم في باريس. انطلق المشروع في 2024 بألبوم «Symphonie IA»، ويضم ألبومين وأكثر من أربعين عملًا، منها ريمكسا الأفرو هاوس «سيدي منصور × Papa Où T\u2019es» (96 ألف مشاهدة على يوتيوب) و«Mode Avion» مع Klara-V (240 ألف مشاهدة). يغني بالفرنسية والإنجليزية والعربية والإسبانية والأوكرانية، ويتعاون مع أصوات أخرى (عكروت بوراس، سارة)، ويتبنى منهجًا هجينًا يولّد فيه الذكاء الاصطناعي ويتولى الإنسان. شخصية المهرّج ذي الشعر الأحمر — مضحكة، مقلقة، حزينة — هي خيط عالمه البصري.',
+      bioShort: 'سيرة قصيرة (≈ 40 كلمة)', bioShortText: 'MMARC-TheONE (MM:ONE) فنان ومنتج إلكتروني مقيم في باريس. نشط منذ 2024، يمزج الأفرو هاوس والإلكترو والراب بأربع لغات، بشخصية مهرّج ذي شعر أحمر، مستخدمًا الذكاء الاصطناعي علنًا كأداة.',
+      bioMedium: 'سيرة متوسطة (≈ 100 كلمة)', bioMediumText: 'MMARC-TheONE، المعروف بـ MM:ONE، فنان متعدد التخصصات مقيم في باريس. انطلق المشروع في 2024 بألبوم «Symphonie IA»، ويضم ألبومين وأكثر من أربعين عملًا، منها ريمكسا الأفرو هاوس «سيدي منصور × Papa Où T\u2019es» (96 ألف مشاهدة على يوتيوب) و«Mode Avion» مع Klara-V (240 ألف مشاهدة). يغني بالفرنسية والإنجليزية والعربية والإسبانية، ويتعاون مع أصوات أخرى (عكروت بوراس، سارة)، ويتبنى منهجًا هجينًا يولّد فيه الذكاء الاصطناعي ويتولى الإنسان. شخصية المهرّج ذي الشعر الأحمر — مضحكة، مقلقة، حزينة — هي خيط عالمه البصري.',
       bioLong: 'سيرة طويلة',
       factsTitle: 'حقائق وأرقام',
       facts: [
@@ -372,13 +378,13 @@ export const ui: Record<Lang, Dict> = {
         ['المقر', 'باريس، فرنسا'],
         ['بداية المشروع', '19 سبتمبر 2024 (ألبوم «Symphonie IA : La Révolution Mélodique du Futur»)'],
         ['الألبومات', '2 — Symphonie IA (2024)، Carnaval Halluciné (2025)'],
-        ['الأعمال المنشورة', '+40 (أغانٍ، ريمكسات، مزج، إديت) حتى 19 أغسطس 2026'],
+        ['الأعمال المنشورة', '+50 (أغانٍ، ريمكسات، مزج، إديت) حتى 1 أكتوبر 2026'],
         ['الفيديو الأكثر مشاهدة', '«Mode Avion» مع Klara-V — أكثر من 240 ألف مشاهدة على يوتيوب'],
         ['الريمكس الأبرز', '«سيدي منصور × Papa Où T\u2019es (Afro House Remix)» — أكثر من 96 ألف مشاهدة'],
         ['قناة يوتيوب', '≈ 136 ألف مشترك'],
         ['أحدث إصدار', '«Sidi Ciel (Club House)» — 14 أغسطس 2026'],
-        ['لغات الغناء', 'الفرنسية، الإنجليزية، العربية، الإسبانية، الأوكرانية'],
-        ['التوزيع', 'DistroKid (Spotify، Apple Music، Deezer، YouTube Music)'],
+        ['لغات الغناء', 'الفرنسية، الإنجليزية، العربية، الإسبانية'],
+        ['الموقع الرسمي', 'mmarc-theone.com'],
         ['جهة الاتصال الصحفية', 'mmarc@greensauce.io'],
       ],
       assetsTitle: 'صور عالية الدقة',
@@ -422,7 +428,7 @@ export const ui: Record<Lang, Dict> = {
       presse: { title: 'Dossier de prensa (EPK) — MMARC-TheONE', description: 'Kit de prensa oficial de MMARC-TheONE: biografías corta, media y larga, hechos y cifras verificables, fotos HD, logos, contacto de prensa.' },
       chronologie: { title: 'Cronología del proyecto — MMARC-TheONE', description: 'Hitos fechados del proyecto MMARC-TheONE de 2024 a hoy: álbumes, singles clave, colaboraciones, hitos del canal de YouTube.' },
     },
-    hero: { kicker: 'Sitio oficial · París', tagline: 'Electrónica underground × arte urbano × fusión cultural. Un payaso que dice verdades con música, en cinco idiomas.', listen: 'Escuchar', press: 'Dossier de prensa', latest: 'Último lanzamiento', latestLabel: 'Publicado el' },
+    hero: { kicker: 'Sitio oficial · París', tagline: 'Electrónica underground × arte urbano × fusión cultural. Un payaso que dice verdades con música, en cuatro idiomas.', listen: 'Escuchar', press: 'Dossier de prensa', latest: 'Último lanzamiento', latestLabel: 'Publicado el', film: 'La película MMARC-TheONE' },
     fiche: {
       title: 'Ficha de identidad',
       rows: [
@@ -431,16 +437,18 @@ export const ui: Record<Lang, Dict> = {
         ['Activo desde', '2024'],
         ['Base', 'París, Francia'],
         ['Géneros', 'Afro House · Afro Tech · electro nightcore · French touch · rap'],
-        ['Idiomas', 'Francés · inglés · árabe · español · ucraniano'],
+        ['Idiomas', 'Francés · inglés · árabe · español'],
         ['Álbumes', 'Symphonie IA (2024) · Carnaval Halluciné (2025)'],
-        ['Distribución', 'DistroKid → Spotify, Apple Music, Deezer, YouTube'],
+        ['Catálogo', '50+ lanzamientos desde 2024'],
+        ['Escuchar', 'YouTube — @MMARC-TheOne'],
+        ['Contacto', 'mmarc@greensauce.io'],
       ],
     },
     home: {
       manifesto: { title: 'Manifiesto', lines: ['Rompemos fronteras.', 'Fusionamos mundos.', 'Transmitimos mensajes a través del arte.'] },
       featuredTitle: 'Lanzamientos clave', featuredSub: 'Los temas que cuentan el proyecto.',
       themesTitle: 'Temas recurrentes', themes: ['Fractura social', 'Urgencia climática', 'Fusión humano / máquina', 'Humor negro', 'Puentes culturales', 'Resistencia underground'],
-      langsTitle: 'Cinco idiomas, un solo proyecto', langsSub: 'Francés para la poesía electrónica, inglés para el alcance internacional, español para el underground latino, árabe para el diálogo entre culturas, ucraniano para la solidaridad.',
+      langsTitle: 'Cuatro idiomas, un solo proyecto', langsSub: 'Francés para la poesía electrónica, inglés para el alcance internacional, español para el underground latino, árabe para el diálogo entre culturas.',
       watchTitle: 'Para ver', watchSub: 'Los vídeos que hicieron despegar el canal.',
       allReleases: 'Ver toda la discografía', allVideos: 'Todos los vídeos',
       aiTitle: 'Un método asumido: IA + humano', aiBody: 'El proyecto reivindica la inteligencia artificial como instrumento, igual que una caja de ritmos o un sampler: generación y separación de stems, prompts de estilo, y luego la mano humana retoma el control — voces reales, percusiones, edición, mezcla. Lo generado se declara; lo tocado se toca.',
@@ -451,7 +459,7 @@ export const ui: Record<Lang, Dict> = {
       paragraphs: [
         'MMARC-TheONE, alias MM:ONE, es un artista multidisciplinar que se mueve entre la música, la imagen y la experimentación digital. El proyecto nace en 2024 con el álbum «Symphonie IA : La Révolution Mélodique du Futur», un primer gesto que marca la línea: usar todas las herramientas disponibles — cámaras analógicas, estudios, inteligencia artificial, estética del arte urbano — para decir algo del mundo.',
         'Desde entonces el catálogo ha crecido a buen ritmo: más de cuarenta temas, un segundo álbum, «Carnaval Halluciné (Fragments 2025)», y una serie de remixes Afro House que revisitan clásicos populares de varias culturas, empezando por «Sidi Mansour». El remix «Sidi Mansour × Papa Où T\u2019es» superó las 96 000 reproducciones en YouTube; «Mode Avion», a dúo con Klara-V, superó las 240 000.',
-        'El proyecto rechaza cualquier etiqueta: rap, Afro House, colaboraciones con voces como Akrout Bouras o Sarra, y un juego constante con las fronteras lingüísticas: los temas pasan del francés al inglés, al árabe, al español y al ucraniano, a menudo dentro de la misma canción.',
+        'El proyecto rechaza cualquier etiqueta: rap, Afro House, colaboraciones con voces como Akrout Bouras o Sarra, y un juego constante con las fronteras lingüísticas: los temas pasan del francés al inglés, al árabe y al español, a menudo dentro de la misma canción.',
         'En 2026 la trilogía «M» (Premier M, Deuxième M «Signal On», Troisième M) marca un giro más íntimo: electro nightcore con concepto «happy-sad», códigos numéricos ocultos (13-13-1) y recuerdos de infancia. Ese mismo año, «Sidi Ciel (Club House)», mashup de «CIEL» (GIMS) y «Sidi Mansour» sostenido por una voz humana y percusiones tocadas, condensa el método: máquina y mano.',
       ],
       personaTitle: 'El personaje', personaBody: [
@@ -490,8 +498,8 @@ export const ui: Record<Lang, Dict> = {
     },
     press: {
       title: 'Prensa y medios', sub: 'Dossier de prensa oficial. Todo lo que aparece aquí puede citarse y reutilizarse con la mención «© MMARC-TheONE».',
-      bioShort: 'Bio corta (≈ 40 palabras)', bioShortText: 'MMARC-TheONE (MM:ONE) es un artista y productor electrónico afincado en París. Activo desde 2024, mezcla Afro House, electro y rap en cinco idiomas bajo un personaje de payaso de afro rojo, asumiendo la IA como instrumento.',
-      bioMedium: 'Bio media (≈ 100 palabras)', bioMediumText: 'MMARC-TheONE, alias MM:ONE, es un artista multidisciplinar afincado en París. Lanzado en 2024 con el álbum «Symphonie IA», el proyecto cuenta con dos álbumes y más de cuarenta temas, entre ellos los remixes Afro House «Sidi Mansour × Papa Où T\u2019es» (96K visitas en YouTube) y «Mode Avion» con Klara-V (240K visitas). Canta en francés, inglés, árabe, español y ucraniano, colabora con otras voces (Akrout Bouras, Sarra) y reivindica un método híbrido en el que la IA genera y el humano retoma el control. Su personaje de payaso pelirrojo — divertido, inquietante, melancólico — es el hilo conductor de su universo visual.',
+      bioShort: 'Bio corta (≈ 40 palabras)', bioShortText: 'MMARC-TheONE (MM:ONE) es un artista y productor electrónico afincado en París. Activo desde 2024, mezcla Afro House, electro y rap en cuatro idiomas bajo un personaje de payaso de afro rojo, asumiendo la IA como instrumento.',
+      bioMedium: 'Bio media (≈ 100 palabras)', bioMediumText: 'MMARC-TheONE, alias MM:ONE, es un artista multidisciplinar afincado en París. Lanzado en 2024 con el álbum «Symphonie IA», el proyecto cuenta con dos álbumes y más de cuarenta temas, entre ellos los remixes Afro House «Sidi Mansour × Papa Où T\u2019es» (96K visitas en YouTube) y «Mode Avion» con Klara-V (240K visitas). Canta en francés, inglés, árabe y español, colabora con otras voces (Akrout Bouras, Sarra) y reivindica un método híbrido en el que la IA genera y el humano retoma el control. Su personaje de payaso pelirrojo — divertido, inquietante, melancólico — es el hilo conductor de su universo visual.',
       bioLong: 'Bio larga',
       factsTitle: 'Hechos y cifras',
       facts: [
@@ -499,13 +507,13 @@ export const ui: Record<Lang, Dict> = {
         ['Base', 'París, Francia'],
         ['Inicio del proyecto', '19 de septiembre de 2024 (álbum «Symphonie IA : La Révolution Mélodique du Futur»)'],
         ['Álbumes', '2 — Symphonie IA (19/09/2024), Carnaval Halluciné (17/10/2025)'],
-        ['Temas publicados', '40+ (singles, remixes, mashups, edits) a 19 de agosto de 2026'],
+        ['Temas publicados', '50+ (singles, remixes, mashups, edits) a 1 de octubre de 2026'],
         ['Vídeo más visto', '«Mode Avion» feat. Klara-V — más de 240 000 visitas en YouTube'],
         ['Remix insignia', '«Sidi Mansour × Papa Où T\u2019es (Afro House Remix)» — más de 96 000 visitas'],
         ['Canal de YouTube', '≈ 136 000 suscriptores'],
         ['Último lanzamiento', '«Sidi Ciel (Club House)» — 14 de agosto de 2026'],
-        ['Idiomas cantados', 'Francés, inglés, árabe, español, ucraniano'],
-        ['Distribución', 'DistroKid (Spotify, Apple Music, Deezer, YouTube Music)'],
+        ['Idiomas cantados', 'Francés, inglés, árabe, español'],
+        ['Sitio oficial', 'mmarc-theone.com'],
         ['Contacto de prensa', 'mmarc@greensauce.io'],
       ],
       assetsTitle: 'Fotos HD',

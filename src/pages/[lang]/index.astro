@@ -14,18 +14,18 @@ const p = (s: string) => `/${lang}/${s}/`;
 ---
 <Base lang={lang} page="">
   <section class="hero">
-    <div class="wrap">
-      <div>
-        <div class="mono hero-kicker">{d.hero.kicker}</div>
-        <h1><span>MMARC</span><span class="thin">TheONE</span></h1>
-        <p class="hero-tag">{d.hero.tagline}</p>
-        <div class="cta-row">
-          <a class="btn btn-red" href={SITE.links.spotify} target="_blank" rel="noopener">▶ {d.hero.listen}</a>
-          <a class="btn btn-ghost" href={p('presse')}>{d.hero.press}</a>
-        </div>
+    <div class="wrap hero-top">
+      <div class="mono hero-kicker">{d.hero.kicker}</div>
+      <h1><span>MMARC</span><span class="thin">TheONE</span></h1>
+      <p class="hero-tag">{d.hero.tagline}</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href={SITE.links.youtube} target="_blank" rel="noopener">▶ {d.hero.listen}</a>
+        <a class="btn btn-ghost" href={p('presse')}>{d.hero.press}</a>
       </div>
-      <div class="hero-visual">
-        <img src="/img/photos/portrait-scarf.webp" alt="MMARC-TheONE — portrait" width="1200" height="1200" fetchpriority="high" />
+    </div>
+    <div class="wrap">
+      <div class="hero-film">
+        <iframe src={`https://mmarc-theone-film-cd-288893b0fe.netlify.app/?lang=${lang}`} title={d.hero.film} loading="eager" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
     <div class="wrap">
@@ -44,7 +44,7 @@ const p = (s: string) => `/${lang}/${s}/`;
         <h2>{latest.title}</h2>
         <div class="meta">{latest.date ? `${d.hero.latestLabel} ${fmt(latest.date)}` : latest.year}{latest.with ? ` · ${d.disco.with} ${latest.with.join(', ')}` : ''}</div>
       </div>
-      <a class="btn btn-ghost" href={latest.apple ?? SITE.links.appleMusic} target="_blank" rel="noopener">{d.hero.listen} ↗</a>
+      <a class="btn btn-ghost" href={latest.spotify ?? latest.youtube ?? SITE.links.youtube} target="_blank" rel="noopener">{d.hero.listen} ↗</a>
     </div>
   </section>
 

@@ -24,9 +24,8 @@ export interface Release {
 
 export const releases: Release[] = [
   {
-    id: 'sidi-ciel', title: 'Sidi Ciel (Club House)', year: 2026, date: '2026-08-14', type: 'mashup', spotify: 'https://open.spotify.com/album/6xqOg12PzIhzMBcPgB9GLg',
+    id: 'sidi-ciel', title: 'Sidi Ciel (Club House)', year: 2026, date: '2026-08-14', type: 'mashup',
     with: ['Klara-V'], cover: '/img/covers/sidi-ciel.webp', featured: true, langs: ['fr', 'ar'],
-    apple: 'https://music.apple.com/fr/album/sidi-ciel-club-house-single/6801770362',
     note: {
       fr: 'Mashup CIEL (GIMS) × Sidi Mansour à 102 BPM : lead vocal humain, percussions jouées, ambiance night-club.',
       en: 'CIEL (GIMS) × Sidi Mansour mashup at 102 BPM: human lead vocal, played percussion, night-club energy.',
@@ -36,7 +35,6 @@ export const releases: Release[] = [
   },
   {
     id: 'troisieme-m', title: 'Troisième M', year: 2026, date: '2026-08-13', type: 'single', spotify: 'https://open.spotify.com/album/3AuJ7Yvun1rynS9A0NT7Bu', cover: undefined, langs: ['fr'],
-    apple: 'https://music.apple.com/fr/album/troisi%C3%A8me-m-single/6801280904',
     note: {
       fr: 'Volet final de la trilogie « M » : minimaliste, sur une boîte à musique vintage, thème du retour à la naissance, codes autobiographiques cachés.',
       en: 'Final chapter of the "M" trilogy: minimalist, built on a vintage music box, themed on returning to birth, with hidden autobiographical codes.',
@@ -45,9 +43,8 @@ export const releases: Release[] = [
     },
   },
   {
-    id: 'sidi-mansour-ya-baba', title: 'Sidi Mansour × Ya Baba (Afro House)', year: 2026, date: '2026-08-10', type: 'remix', spotify: 'https://open.spotify.com/album/3jay4zQqFw0koKsoqiWped',
+    id: 'sidi-mansour-ya-baba', title: 'Sidi Mansour × Ya Baba (Afro House)', year: 2026, date: '2026-08-10', type: 'remix',
     cover: '/img/covers/sidi-mansour-ya-baba.webp', langs: ['ar', 'fr', 'en'],
-    apple: 'https://music.apple.com/fr/album/sidi-mansour-x-ya-baba-afro-house-single/6800138167',
     note: {
       fr: 'Single de l\u2019été 2026 : refrain original « baba / papa / daddy », montée progressive jusqu\u2019au club, hook « All eyes on me, ya baba ».',
       en: 'Summer 2026 single: original "baba / papa / daddy" chorus, slow build to peak-time club, "All eyes on me, ya baba" hook.',
@@ -55,13 +52,13 @@ export const releases: Release[] = [
       es: 'Single del verano 2026: estribillo original «baba / papa / daddy», subida progresiva hasta el club.',
     },
   },
-  { id: 'jimmys-fat-duck', title: "Jimmy's Fat Duck (Disco Edit)", year: 2026, date: '2026-07-01', type: 'edit', spotify: 'https://open.spotify.com/album/1KZWhl2pFfCvTveElhQwRj', apple: 'https://music.apple.com/fr/album/jimmys-fat-duck-disco-edit-single/6786443143' },
-  { id: 'un-peu-dailleurs', title: "Un peu d'ailleurs", year: 2026, type: 'single', langs: ['fr'], spotify: 'https://open.spotify.com/album/3J8ENRSBCrbAsZmDlKHvpG', apple: 'https://music.apple.com/fr/album/un-peu-dailleurs-single/6782426091' },
-  { id: 'vingt-deux', title: 'VINGT-DEUX', year: 2026, date: '2026-06-12', type: 'single', spotify: 'https://open.spotify.com/album/7hw8xcwEG4R6ZMRYfQjmhk', cover: '/img/covers/vingt-deux.webp', langs: ['fr'], apple: 'https://music.apple.com/fr/album/vingt-deux-single/6769427831' },
-  { id: 'look-at-me-now', title: 'Look At Me Now (Klara-V Live Session) [Radio Edit]', year: 2026, type: 'live', with: ['Klara-V'], cover: '/img/covers/look-at-me-now.webp', langs: ['en'], spotify: 'https://open.spotify.com/album/2AYwnGOzsXHYgEvq4AHME0', apple: 'https://music.apple.com/fr/album/look-at-me-now-klara-v-live-session-radio-edit-single/6780859417' },
-  { id: 'rendez-vous-poesie', title: 'Rendez-vous avec la poésie', year: 2026, type: 'single', langs: ['fr'], spotify: 'https://open.spotify.com/album/4WJfRLtHc1tMuocqZaB32t' },
+  { id: 'jimmys-fat-duck', title: "Jimmy's Fat Duck (Disco Edit)", year: 2026, date: '2026-07-01', type: 'edit' },
+  { id: 'un-peu-dailleurs', title: "Un peu d'ailleurs", year: 2026, type: 'single', langs: ['fr'] },
+  { id: 'vingt-deux', title: 'VINGT-DEUX', year: 2026, date: '2026-06-12', type: 'single', cover: '/img/covers/vingt-deux.webp', langs: ['fr'] },
+  { id: 'look-at-me-now', title: 'Look At Me Now (Klara-V Live Session) [Radio Edit]', year: 2026, type: 'live', with: ['Klara-V'], cover: '/img/covers/look-at-me-now.webp', langs: ['en'], apple: 'https://music.apple.com/fr/album/look-at-me-now-klara-v-live-session-radio-edit-single/6780859417' },
+  { id: 'rendez-vous-poesie', title: 'Rendez-vous avec la poésie', year: 2026, type: 'single', langs: ['fr'] },
   {
-    id: 'deuxieme-m', title: 'DEUXIÈME M « Signal On »', year: 2026, type: 'single', cover: '/img/covers/signal-on.webp', langs: ['fr'],
+    id: 'deuxieme-m', title: 'DEUXIÈME M « Signal On »', year: 2026, type: 'single', spotify: 'https://open.spotify.com/album/2MtnAlT0wRwS2d3NFlEzFQ', cover: '/img/covers/signal-on.webp', langs: ['fr'],
     note: {
       fr: 'Deuxième volet de la trilogie « M » — electro nightcore, code 13-13-1, concept « happy-sad » : beat euphorique, paroles mélancoliques.',
       en: 'Second chapter of the "M" trilogy — electro nightcore, code 13-13-1, "happy-sad" concept: euphoric beat, melancholic lyrics.',
@@ -69,13 +66,23 @@ export const releases: Release[] = [
       es: 'Segundo capítulo de la trilogía «M» — electro nightcore, código 13-13-1, concepto «happy-sad»: beat eufórico, letra melancólica.',
     },
   },
+  {
+    id: 'premier-m', title: 'PREMIER M « Thirteen Thirteen One »', year: 2026, date: '2026-04-21', type: 'single', langs: ['fr'],
+    spotify: 'https://open.spotify.com/album/5BAL7gNIfYruIciMjMNagy',
+    note: {
+      fr: 'Premier volet de la trilogie « M » — electro nightcore, code 13-13-1, ouverture du concept « happy-sad ».',
+      en: 'First chapter of the "M" trilogy — electro nightcore, code 13-13-1, opening the "happy-sad" concept.',
+      ar: 'الجزء الأول من ثلاثية «M» — إلكترو نايتكور، شفرة 13-13-1، افتتاح مفهوم «happy-sad».',
+      es: 'Primer capítulo de la trilogía «M» — electro nightcore, código 13-13-1, apertura del concepto «happy-sad».',
+    },
+  },
   { id: 'below-zero', title: 'تحت الصفر (Below Zero)', year: 2026, type: 'single', langs: ['ar'] },
   { id: 'perche-ti-amo', title: 'Sarra × MMARC-TheONE – Perché Ti Amo × Badi Eish (Global Hit Remix)', year: 2026, type: 'mashup', with: ['Sarra'], langs: ['it', 'ar'] },
-  { id: 'all-eyez-on-me', title: 'All Eyez on Me (MMARC)', year: 2026, date: '2026-04-07', type: 'edit', cover: '/img/covers/all-eyez-on-me.webp', spotify: 'https://open.spotify.com/album/1P37kz4up0nhRp6IUc3BKM' },
+  { id: 'all-eyez-on-me', title: 'All Eyez on Me (MMARC)', year: 2026, date: '2026-04-07', type: 'edit', cover: '/img/covers/all-eyez-on-me.webp' },
   { id: 'gangstas-paradise', title: "Gangsta's Paradise (Clint Eastwood Edit) [Future Collapse]", year: 2026, type: 'edit' },
   { id: 'lady-hear-me-tonight', title: 'Lady (Hear Me Tonight) [Midnight French Touch Edit]', year: 2026, type: 'edit' },
   {
-    id: 'sidi-mansour-papa-ou-tes', title: "Sidi Mansour × Papa Où T'es (Afro House Remix)", year: 2026, date: '2026-04-01', type: 'remix', spotify: 'https://open.spotify.com/album/4OJzuBNY6Q9IXgNo9p9YeN',
+    id: 'sidi-mansour-papa-ou-tes', title: "Sidi Mansour × Papa Où T'es (Afro House Remix)", year: 2026, date: '2026-04-01', type: 'remix', youtube: 'https://www.youtube.com/watch?v=YOJoX3EpwN8',
     cover: '/img/covers/sidi-mansour-papa-ou-tes.webp', stat: '96K+ YouTube', featured: true, langs: ['ar', 'fr'],
     note: {
       fr: 'Le remix Afro House qui a dépassé les 96 000 vues sur YouTube et lancé la série « Sidi Mansour ».',
@@ -87,22 +94,21 @@ export const releases: Release[] = [
   { id: 'how-you-like-that', title: 'How You Like That — Brazilian Baião × Tunisian Darbuka', year: 2026, type: 'remix', with: ['Klara-V'], cover: '/img/covers/how-you-like-that.webp' },
   { id: 'orbit-mode', title: 'ORBIT Mode', year: 2026, type: 'single', cover: '/img/covers/orbit-mode.webp' },
   { id: 'drift-mode', title: 'Drift Mode', year: 2026, type: 'single', cover: '/img/covers/drift-mode.webp' },
-  { id: 'mortal-kombat-bla-bla-bla', title: 'Mortal Kombat 1999 × Bla Bla Bla (Gigi D\u2019Agostino) — 2026 Mashup', year: 2026, date: '2026-03-11', type: 'mashup', cover: '/img/covers/mortal-kombat-bla-bla-bla.webp', spotify: 'https://open.spotify.com/album/1QmrO0OEeHsEr65w8cEQNa' },
-  { id: 'akrout-bouras', title: 'Akrout Bouras – عكروت بوراس', year: 2026, date: '2026-03-30', type: 'single', with: ['Akrout Bouras'], langs: ['ar'], spotify: 'https://open.spotify.com/album/0vxqcYSRVNBHNr2bt9Qv5n' },
+  { id: 'mortal-kombat-bla-bla-bla', title: 'Mortal Kombat 1999 × Bla Bla Bla (Gigi D\u2019Agostino) — 2026 Mashup', year: 2026, date: '2026-03-11', type: 'mashup', cover: '/img/covers/mortal-kombat-bla-bla-bla.webp' },
+  { id: 'akrout-bouras', title: 'Akrout Bouras – عكروت بوراس', year: 2026, date: '2026-03-30', type: 'single', with: ['Akrout Bouras'], langs: ['ar'] },
 
-  { id: 'no-pass-on-backs', title: 'No Pass On Backs', year: 2026, date: '2026-01-31', type: 'single', with: ['Akrout Bouras'], cover: '/img/covers/no-pass-on-backs.webp', spotify: 'https://open.spotify.com/album/1Y5mPkvyCB8StqbU2F2ecK' },
-  { id: 'interstellar-hotbox', title: 'Interstellar Hotbox Indica (90s West Co Chill Trip)', year: 2026, date: '2026-01-23', type: 'single', cover: '/img/covers/interstellar-hotbox.webp', spotify: 'https://open.spotify.com/album/1nKZNGjZfpYrd2tBP2ANQq' },
+  { id: 'no-pass-on-backs', title: 'No Pass On Backs', year: 2026, date: '2026-01-31', type: 'single', with: ['Akrout Bouras'], cover: '/img/covers/no-pass-on-backs.webp' },
+  { id: 'interstellar-hotbox', title: 'Interstellar Hotbox Indica (90s West Co Chill Trip)', year: 2026, date: '2026-01-23', type: 'single', cover: '/img/covers/interstellar-hotbox.webp' },
 
   // 2025
-  { id: 'carnaval-hallucine', title: 'CARNAVAL HALLUCINÉ (Fragments 2025)', year: 2025, date: '2025-10-17', type: 'album', spotify: 'https://open.spotify.com/album/4uHJxKLgJUES8SxEZJbXno', cover: '/img/covers/carnaval-hallucine.webp', featured: true,
-    apple: 'https://music.apple.com/fr/album/carnaval-hallucine/1847705740',
+  { id: 'carnaval-hallucine', title: 'CARNAVAL HALLUCINÉ (Fragments 2025)', year: 2025, date: '2025-10-17', type: 'album', cover: '/img/covers/carnaval-hallucine.webp', featured: true,
     note: {
       fr: 'Deuxième album, 18 titres. Danser · Survivre · Penser.',
       en: 'Second album. Dance · Survive · Think.',
       ar: 'الألبوم الثاني. ارقص · انجُ · فكّر.',
       es: 'Segundo álbum. Bailar · Sobrevivir · Pensar.',
     } },
-  { id: 'labubu-lafufu', title: 'LABUBU LAFUFU SONG OH MY GOT (Funny Meme Music)', year: 2025, date: '2025-10-02', type: 'single', apple: 'https://music.apple.com/fr/album/labubu-lafufu-song-oh-my-got-funny-meme-music-single/1844050596' },
+  { id: 'labubu-lafufu', title: 'LABUBU LAFUFU SONG OH MY GOT (Funny Meme Music)', year: 2025, date: '2025-10-02', type: 'single' },
   { id: 'carte-vitale', title: 'Carte Vitale (Téma la Sécu)', year: 2025, type: 'single', langs: ['fr'] },
   { id: 'mallasine', title: 'Akrout Bouras — Mallasine', year: 2025, type: 'single', with: ['Akrout Bouras'], langs: ['ar'] },
   { id: 'lean-back', title: 'Akrout Bouras – Lean Back', year: 2025, type: 'single', with: ['Akrout Bouras'], cover: '/img/covers/akrout-bouras-lean-back.webp' },
@@ -126,8 +132,7 @@ export const releases: Release[] = [
   { id: 'fragments-depoques', title: "Fragments d'Époques", year: 2025, type: 'single', langs: ['fr'] },
 
   // 2024
-  { id: 'symphonie-ia', title: 'Symphonie IA : La Révolution Mélodique du Futur', year: 2024, date: '2024-09-19', type: 'album', featured: true, langs: ['fr'], spotify: 'https://open.spotify.com/album/2oSbmRCwhZglaY4dG7cKVb',
-    apple: 'https://music.apple.com/fr/album/symphonie-ia-la-r%C3%A9volution-m%C3%A9lodique-du-futur/1769827950',
+  { id: 'symphonie-ia', title: 'Symphonie IA : La Révolution Mélodique du Futur', year: 2024, date: '2024-09-19', type: 'album', featured: true, langs: ['fr'],
     youtube: 'https://www.youtube.com/watch?v=7oJyc-PdODA',
     note: {
       fr: 'Premier album, 13 titres, publié le 19 septembre 2024 : le manifeste fondateur du projet, où l\u2019IA est assumée comme instrument.',
